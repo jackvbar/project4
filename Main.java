@@ -64,6 +64,8 @@ public class Main {
             }
             else if (userTyped.equals("t") || userTyped.equals("teams")){
                 displayTeams();
+            }else if (userTyped.equals("path")|| userTyped.equals("p")){
+                getFileName();
             }
             else if (userTyped.equals("c") || userTyped.equals("competitions")){
                 displayCompetition();
@@ -92,9 +94,12 @@ public class Main {
         /* Print welcome message */
                System.out.println("Welcome to the Annual Lawn Game Olympics, Please read the following instructions." +
                        "\nEnter the letter e or the word events for a list of today's events.\nEnter the letter o or the word olympians for a list of the competing olympians." +
-                       "\nEnter the letter t or the work teams to create and see Olympian teams." +
-                       "\nEnter the letter h or the word help to display some helpful tips if you are having trouble.")
-              ;
+                       "\nEnter the letter t or the word teams to create and see Olympian teams." +
+                       "\nEnter the letter h or the word help to display some helpful tips if you are having trouble."
+                       "\nEnter the letters sc or the words start competition to initialize a competition.\nEnter the letter c or the word competition for a list of the competitions." +
+                       "\nEnter the letters ec or the words end competition to end a competition." +
+                       "\nEnter the letter p or the word path to allow the program to read your olympians.lgoo file."
+               );
 
            }
 
@@ -111,8 +116,15 @@ public class Main {
 
    public static void displayTeams(){
        TeamManager teams = new TeamManager();
+       teams.getTeamArray();
        teams.displayTeams();
    }
+
+    public static void getFileName(){
+        OlympianManager olympian = new OlympianManager();
+        olympian.getFileName(fileName);
+    }
+
     public static void displayHelp(){
         System.out.println("Your input is case sensitive, make sure you are using lowercase letters and try again.\n" +
                 "Remember, entering the letter e or the word events will display a list of today's events.\n" +
@@ -120,11 +132,6 @@ public class Main {
                 "Entering the letter t or the word teams will create and display teams for the Yard Game Olympics.\n" +
                 "Entering the letter h or the word help brings you to this message.\n" +
                 "Entering anything other than the above arguments will not work.");
-    }
-
-    public static void startComp(){
-        
-
     }
 
     public static void endCompetition(){
@@ -143,24 +150,14 @@ public class Main {
             System.out.println("Competition not found, select another competition from the list");
         endCompetition();
         }
-
-        CompetitionManager.EndComp(compNum);
-
+        CompetitionManager.EndCompetition(compNum);
     }
-
 
     public static void displayCompetition(){
         CompetitionManager myList = new CompetitionManager();
-        myList.StartCompetition();
-        myList.StartCompetition(10);
-        myList.StartCompetition(15);
-        myList.StartCompetition(20);
-        myList.StartCompetition(0, 4);
-        myList.StartCompetition(3, 13);
-        myList.StartCompetition(4);
-
-        for(int i=0; i < myList.length(); i++){
+        for(int i=0; i < myList.length(); i++) {
             System.out.println(myList.get(i));
+            myList.StartCompetition(i);
         }
 
     }

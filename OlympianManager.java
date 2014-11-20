@@ -12,8 +12,8 @@ import java.util.List;
 
 public class OlympianManager {
 
-
-    private Olympian[] olympians  = new Olympian[16];
+    private int counter;
+    private Olympian[] olympians  = new Olympian[counter];
     private String names;
     private String fileName;
 

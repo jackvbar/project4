@@ -9,9 +9,8 @@ public class TeamManager {
     private int team;
     private Olympian[] competeTeam;
     private int teamSize;
-    private Team[] teamArray = new Team[8];
     private int counter = 0;
-
+    private Team[] teamArray = new Team[counter];
 
 
     public TeamManager(){
@@ -25,30 +24,13 @@ public class TeamManager {
         int totalTeamSize = competeTeam.length;
 
         while(totalTeamSize != 0){
-            Random rn = new Random();
-            int random1 = rn.nextInt(14) + 1;
-            int random2 = rn.nextInt(14) + 1;
 
             for(int i=0; i>competeTeam.length; i=i+2){
-
-            }
-
-            /*if(competeTeam[random1] != null && competeTeam[random2] != null){
-                teamArray[counter].createTeam(competeTeam[random1], competeTeam[random2], 0, 0);
+                getTeamArray();
+                //accumulate the size of the team array
                 counter++;
-                if(random1 == random2){
-                    counter--;
-                }else{
-                    competeTeam[random1] = null;
-                    competeTeam[random2] = null;
-                    totalTeamSize = totalTeamSize -2;
-                }*/
             }
-
-
         }
-
-        getTeamArray();{
     }
     public Team[] getTeamArray(){
         return this.teamArray;
