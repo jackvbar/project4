@@ -10,6 +10,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    private static String fileName;
 
     public static void main(String[] args) {
         /**/
@@ -30,11 +31,20 @@ public class Main {
         Main.InitializeAndWelcome();
 
         /* */
+        System.out.println("Please enter the name of your Olympian file with extension included");
+        BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
+        try{
+            fileName = userInput.readLine();
+        }catch(IOException ioe){
+            System.out.println("Error");
+            return;
+        }
+
         String userTyped;
         boolean escape = false;
-            BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
+            BufferedReader userIn = new BufferedReader(new InputStreamReader(System.in));
                try{
-                   userTyped= userInput.readLine();
+                   userTyped= userIn.readLine();
                }catch(IOException ioe){
                    System.out.println("Error");
                    return;
@@ -55,13 +65,22 @@ public class Main {
             else if (userTyped.equals("t") || userTyped.equals("teams")){
                 displayTeams();
             }
+            else if (userTyped.equals("c") || userTyped.equals("competitions")){
+                displayCompetition();
+            }
+            else if (userTyped.equals("sc") || userTyped.equals("start competition")){
+                StartComp();
+            }
+            else if (userTyped.equals("ec") || userTyped.equals("end competition")){
+                    endCompetition();
+                }
             else if (userTyped.equals("q") || userTyped.equals("quit")) {
                     System.out.println("Thank you for playing, goodbye");
                     EndProgram();
             } else {
                 System.out.println("Invalid input, entering the letters e, o, h, or q or the words events, olympians, help, or quit as they appear before you.");
                 try{
-                    userTyped = userInput.readLine();
+                    userTyped = userIn.readLine();
             }catch(IOException ioe){
                     System.out.println("Error");
                     return;
@@ -103,15 +122,24 @@ public class Main {
                 "Entering anything other than the above arguments will not work.");
     }
 
-    public Event getEvent(){
-        return this.Event;
-    }
+    public static void endCompetition(){
+        String compRep = "";
+        CompetitionManager.displayComps();
+        System.out.println("Enter the number of the competition you would like to end");
+        BufferedReader typedNum = new BufferedReader(new InputStreamReader(System.in));
+        try{
+            compRep = typedNum.readLine();
+        }catch(IOException ioe) {
+            System.out.println("error");
+        }
+        int compNum = Integer.parseInt(compRep);
 
-    public Team getTeam1(){
+        if (compNum >= CompetitionManager.CompList.length){
+            System.out.println("Competition not found, select another competition from the list");
+        endCompetition();
+        }
 
-    }
-
-    public Team getTeam2(){
+        CompetitionManager.EndComp(compNum);
 
     }
 

@@ -6,22 +6,35 @@ package com.company;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 
 public class OlympianManager {
 
+
     private Olympian[] olympians  = new Olympian[16];
     private String names;
+    private String fileName;
 
     public OlympianManager() {
         for(int i = 0; i < olympians.length; i++){
             olympians[i] = new Olympian();
         }
-        try {
 
-            BufferedReader inputStream = new BufferedReader(new FileReader("C:\\Users\\jack\\olympians.lgoo.txt"));
+        public void getFileName(String fileName){
+            BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
+            try {
+                fileName = userInput.readLine();
+            } catch (IOException ioe) {
+                System.out.println("Error");
+                return;
+            }
+        }
+        try{
 
+
+            BufferedReader inputStream = new BufferedReader(new FileReader(fileName));
             String line2;
             Boolean firstLine = false;
             Integer count = 0;
@@ -39,9 +52,11 @@ public class OlympianManager {
                     count++;
                 }
 
-        } catch (Exception e) {
-            System.out.println("Exception");
-        }}
+        } catch(Exception e)
+
+    {
+        System.out.println("Exception");
+    }
 
         public Olympian[] getObjectOlympians(){
             return this.olympians;

@@ -29,8 +29,11 @@ public class TeamManager {
             int random1 = rn.nextInt(14) + 1;
             int random2 = rn.nextInt(14) + 1;
 
+            for(int i=0; i>competeTeam.length; i=i+2){
+                
+            }
 
-            if(competeTeam[random1] != null && competeTeam[random2] != null){
+            /*if(competeTeam[random1] != null && competeTeam[random2] != null){
                 teamArray[counter].createTeam(competeTeam[random1], competeTeam[random2], 0, 0);
                 counter++;
                 if(random1 == random2){
@@ -39,13 +42,13 @@ public class TeamManager {
                     competeTeam[random1] = null;
                     competeTeam[random2] = null;
                     totalTeamSize = totalTeamSize -2;
-                }
+                }*/
             }
 
 
         }
 
-        getTeamArray();
+        getTeamArray();{
     }
     public Team[] getTeamArray(){
         return this.teamArray;
