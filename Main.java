@@ -69,7 +69,7 @@ public class Main {
                 displayCompetition();
             }
             else if (userTyped.equals("sc") || userTyped.equals("start competition")){
-                StartComp();
+                startComp();
             }
             else if (userTyped.equals("ec") || userTyped.equals("end competition")){
                     endCompetition();
@@ -122,6 +122,11 @@ public class Main {
                 "Entering anything other than the above arguments will not work.");
     }
 
+    public static void startComp(){
+        
+
+    }
+
     public static void endCompetition(){
         String compRep = "";
         CompetitionManager.displayComps();
@@ -142,6 +147,7 @@ public class Main {
         CompetitionManager.EndComp(compNum);
 
     }
+
 
     public static void displayCompetition(){
         CompetitionManager myList = new CompetitionManager();

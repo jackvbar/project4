@@ -49,20 +49,17 @@ public class LinkList {
                     }
                 }
             return null;
-            }
+            }}
 
         public void removeLink(int tracker){
         if (tracker > length || haveEmptyList() || tracker < 0){
-            return;
-        }
-
-
-    if (tracker == 0){
-        head = head.getNext();
-        length --;
-    } else if (tracker == length -1) {
-        Link link = new Link();
-        link = head;
+            return;}
+             if (tracker == 0){
+             head = head.getNext();
+             length --;
+            } else if (tracker == length -1) {
+                Link link = new Link();
+                link = head;
 
         for (int i = 0; i < length; i++) {
             link = link.getNext();
@@ -76,20 +73,48 @@ public class LinkList {
         length--;
       }
    }
-
     public int GetLength(){
-    return length;
+        return length;
     }
-    public void displayCompetitions(){
-        Link link = new Link();
+
+   //Need a series of getnum and remove funtions to handle the removal of links from the list
+    //these help because passing through methods allows the data to be changes so that compared variables have mathcing data types
+
+    public int getTeamNum(Team team) {
+    Link link = new Link();
         link = head;
-        for(int i = 0; i<length; i++){
-            System.out.print(i + ":");
-            System.out.print(link.getMyComp().Event.getInfo());
-            System.out.print(link.getMyComp().Team.getTeamInfo());
+        for(int i=0; i<length; i++) {
+            if (link.getTeam1() == team) {
+                return i;
+            }
             link = link.getNext();
         }
+        return -500;
     }
+
+    public void killTeam(Team byeTeam) {
+        int tracker = getTeamNum(byeTeam);
+        removeLink(tracker);
+    }
+
+    public int getEventNum(Event event) {
+        Link link = new Link();
+        link = head;
+        for (int i = 0; i < length; i++) {
+            if (link.getEvent()==event){
+            return i;
+        }
+        link = link.getNext();
+    }
+    return -500;
+    }
+
+    public void killEvent(Event byeEvent) {
+        int tracker = getEventNum(byeEvent);
+        removeLink(tracker);
+    }
+
+
 
     public void displayTeams(){
         Link link = new Link();
@@ -111,38 +136,14 @@ public class LinkList {
             link = link.getNext();
         }
 
+    } public void displayCompetitions(){
+        Link link = new Link();
+        link = head;
+        for(int i = 0; i<length; i++){
+            System.out.print(i + ":");
+            System.out.print(link.getMyComp().Event.getInfo());
+            System.out.print(link.getMyComp().Team.getTeamInfo());
+            link = link.getNext();
+        }
     }
-
-
-
-
 }
-
-
-            /*competition newComp = new competition();
-               if(tail == null){
-                tail = newComp;
-                newComp.Event = event;
-                newComp.Team = team1;
-                newComp.Team = team2;}
-            else{
-                newComp.previous = tail;
-                tail.next = newComp;
-                tail = newComp;
-            }
-        }
-
-        public void EndCompetition(ICompetition competition, Team winningTeam){
-            competition CurrItem = head;
-            int CurrIndex = 0;
-            while(CurrItem != null && CurrIndex != index){
-                CurrItem = CurrItem.next;
-                CurrIndex++;
-            }
-            if(CurrItem == null){
-                System.out.println("GET YOUR SHIT TOGETHER");
-            }
-            return CurrItem.value;*/
-
-
-        }

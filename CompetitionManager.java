@@ -14,7 +14,7 @@ public class CompetitionManager {
        competition newComp = new competition();
        if(tail == null){
            tail = newComp;
-           newComp.Event = event;
+           newComp.event = event;
            //newComp.Team = team1;
            //newComp.Team = team2;
        }
@@ -33,7 +33,7 @@ public class CompetitionManager {
             CurrIndex++;
         }
         if(CurrItem == null){
-            System.out.println("GET YOUR SHIT TOGETHER");
+            System.out.println("Error");
         }
         return CurrItem.value;
 

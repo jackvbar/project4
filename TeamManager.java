@@ -30,7 +30,7 @@ public class TeamManager {
             int random2 = rn.nextInt(14) + 1;
 
             for(int i=0; i>competeTeam.length; i=i+2){
-                
+
             }
 
             /*if(competeTeam[random1] != null && competeTeam[random2] != null){

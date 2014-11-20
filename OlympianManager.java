@@ -17,23 +17,24 @@ public class OlympianManager {
     private String names;
     private String fileName;
 
+    //Trying to get a variable assigned to the path for the file via a buffered reader.
+    public String getFileName(String fileName) {
+        BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            fileName = userInput.readLine();
+        } catch (IOException ioe) {
+            System.out.println("Error");
+        }
+        return fileName;
+    }
+
     public OlympianManager() {
         for(int i = 0; i < olympians.length; i++){
             olympians[i] = new Olympian();
         }
 
-        public void getFileName(String fileName){
-            BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
-            try {
-                fileName = userInput.readLine();
-            } catch (IOException ioe) {
-                System.out.println("Error");
-                return;
-            }
-        }
+
         try{
-
-
             BufferedReader inputStream = new BufferedReader(new FileReader(fileName));
             String line2;
             Boolean firstLine = false;
